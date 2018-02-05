@@ -1,6 +1,6 @@
 
 I need sum{f_n : f_n < 4mil and 2|f_n}
-where f_n is the nth fibonacci number, with f_1 = f_2 = 2 so f_3=2 and etc. I'm indexing slightly differently from the question.
+where f_n is the nth fibonacci number, with f_1 = f_2 = 1 so f_3=2 and etc. I'm indexing slightly differently from the question.
 
 When is f_n even? each f_n = a + b for some a and b. In order for 2|a+b I need either a,b even or a,b odd.
 
