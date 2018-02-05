@@ -1,0 +1,36 @@
+
+I need sum{f_n : f_n < 4mil and 2|f_n}
+where f_n is the nth fibonacci number, with f_1 = f_2 = 2 so f_3=2 and etc. I'm indexing slightly differently from the question.
+
+When is f_n even? each f_n = a + b for some a and b. In order for 2|a+b I need either a,b even or a,b odd.
+
+I start with f_1=o and f_2=o so I have
+o -> o -> e -> o -> o -> e -> o -> o -> e -> o -> ...
+thus the even terms are exactly f_{3n}.
+
+A simple check determines that f_33 is the final Fibonnaci number less than 4mil.
+
+So I need f_3 + f_6 + ... + f_33.
+
+It turns out that the fib numbers can be expressed in a closed form
+f_n = (phi^n - psi^n) / sqrt(5)
+	where phi = (1 + sqrt 5) / 2 and psi = 1 - phi
+
+this means I need
+
+S = (1 / sqrt 5) * sum_{j=1}^11 (phi^3)^j - (psi^3)^j
+
+These are finite geometric sums so I have a closed form:
+sum_{k=1}^n r^k = (1  - r^{n+1}) / (1 - r)) - 1
+so I have
+
+(sqrt 5) S = (1 - phi^36) / (1 - phi^3) - (1 - psi^36) / (1 - psi^3).
+
+Plugging this into R, I find S = 4613732.
+
+
+
+
+
+
+
