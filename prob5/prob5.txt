@@ -1,0 +1,6 @@
+This is LCM({2, 3, ..., 20}). I just collected prime factors so it's
+
+2^4 * 3^2 * 5 * 7 * 11 * 13 * 17 * 19 = 232792560.
+
+
+
