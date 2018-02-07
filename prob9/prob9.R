@@ -8,17 +8,38 @@
 # Also, what's the biggest that a can be? b > a so if a=500 then b > 500 which violates our perimeter requirement.
 # so I can search over 1 <= a <= 499 and max(a, 500 - a) <= b <= 999
 
-
-for(a in 1:499) {
-  for(b in max(c(500-a, a)):999) {
-    if(500 + a * b / 1000 - a - b == 0) {
-      print(a * b * (1000 - a - b))
-      break
+# my optimized version
+f_opt <- function() {
+  for(a in 1:499) {
+    for(b in max(c(a, 500-a)):999) {  # just doing a:999 might be faster in this case
+      if(500 + a * b / 1000 - a - b == 0) {
+        return(a * b * (1000 - a - b))
+      }
     }
   }
 }
 
 
+
+f_naive <- function() {
+  for(a in 1:999) {
+    for(b in a:1000) {
+      if(sqrt(a^2 + b^2) %% 1 == 0 & a + b + sqrt(a^2 + b^2) == 1000) {
+        return(a * b * sqrt(a^2 + b^2))
+      }
+    }
+  }
+}
+
+
+library(microbenchmark)
+
+microbenchmark(f_opt, times = 5000L)
+
+microbenchmark(f_naive, times = 500L)
+
+
+print(f_opt())
 
 
 
